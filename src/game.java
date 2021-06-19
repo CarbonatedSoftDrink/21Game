@@ -16,7 +16,7 @@ public class game {
     ArrayList<card> houseHand = new ArrayList<>();
 
     public static void menu1(int currency){
-        System.out.println("Your wallet contains: "+ currency + "chips.");
+        System.out.println("Your wallet contains: "+ currency + " chips.");
         System.out.println("Please select an option:");
         System.out.println("1. Join the table");
         System.out.println("2. Do nothing");
@@ -43,18 +43,22 @@ public class game {
             System.out.println("Welcome to BlackJack!");
             menu1(wallet);
             answer = read.nextLine();
+            //System.out.println(answer);
 
             switch (answer) {
                 case "1":
                     System.out.println("Joining the table...");
                     playGame(wallet);
+                    break;
                 case "2":
                     System.out.println("Doing nothing...");
+                    break;
                 case "3":
                     System.out.println("Exiting...");
+                    break;
                 default:
                     System.out.println("Your option was unreadable. Please try again.");
-
+                    break;
             }
         }
 
