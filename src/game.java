@@ -1,4 +1,6 @@
 // The game is known as 21 or BlackJack
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class game {
     int wallet = 100;
@@ -12,8 +14,14 @@ public class game {
             new card("Diamonds",2), new card("Diamonds",3), new card("Diamonds",4), new card("Diamonds",5), new card("Diamonds",6), new card("Diamonds",7), new card("Diamonds",8), new card("Diamonds",9), new card("Diamonds",10), new card("Diamonds",11), new card("Diamonds",12), new card("Diamonds",13), new card("Diamonds",14)
     };
 
+    ArrayList<card> playerHand = new ArrayList<>();
+    ArrayList<card> houseHand = new ArrayList<>();
+
+    // TODO make playable version for console.
     // Opening...
     public static void main(String[] args) {
+        Scanner read = new Scanner(System.in);
+        String answer;
         System.out.println("Welcome to BlackJack!");
 
     }
