@@ -3,9 +3,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class game {
-    int wallet = 100;
-    int playerScore = 0;
-    int houseScore = 0;
     // Creating the deck of cards
     card[] deck = {
             new card("Spades",2), new card("Spades",3), new card("Spades",4), new card("Spades",5), new card("Spades",6), new card("Spades",7), new card("Spades",8), new card("Spades",9), new card("Spades",10), new card("Spades",11), new card("Spades",12), new card("Spades",13), new card("Spades",14),
@@ -18,19 +15,48 @@ public class game {
     ArrayList<card> playerHand = new ArrayList<>();
     ArrayList<card> houseHand = new ArrayList<>();
 
-    public static void menu1(){
+    public static void menu1(int currency){
+        System.out.println("Your wallet contains: "+ currency + "chips.");
         System.out.println("Please select an option:");
         System.out.println("1. Join the table");
         System.out.println("2. Do nothing");
         System.out.println("3. Exit");
     }
 
+    public static int playGame(int wallet){
+        System.out.println("Playing...");
+        return wallet;
+    }
+
     // TODO make playable version for console.
-    // Opening...
     public static void main(String[] args) {
+        // Variables
+        int wallet = 100;
+        int playerScore = 0;
+        int houseScore = 0;
+        //
         Scanner read = new Scanner(System.in);
-        String answer;
-        System.out.println("Welcome to BlackJack!");
+        String answer = "0";
+
+        // Opening...
+        while (!answer.equals("3")){
+            System.out.println("Welcome to BlackJack!");
+            menu1(wallet);
+            answer = read.nextLine();
+
+            switch (answer) {
+                case "1":
+                    System.out.println("Joining the table...");
+                    playGame(wallet);
+                case "2":
+                    System.out.println("Doing nothing...");
+                case "3":
+                    System.out.println("Exiting...");
+                default:
+                    System.out.println("Your option was unreadable. Please try again.");
+
+            }
+        }
 
     }
 
