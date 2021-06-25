@@ -23,6 +23,15 @@ public class game {
         System.out.println("0. Exit");
     }
 
+    public static void deal(card[] deck, card[] using, ArrayList<card> hand){
+        Random random = new Random();
+        int capacity = deck.length;
+        int chosen = random.nextInt(capacity);
+        hand.add(deck[chosen]);
+        using[using.length-1] = deck[chosen];
+
+    }
+
     public static int playGame(int wallet){
         // arrays and variables
         Random randomObj = new Random();
@@ -37,25 +46,37 @@ public class game {
                 new card("Hearts",2), new card("Hearts",3), new card("Hearts",4), new card("Hearts",5), new card("Hearts",6), new card("Hearts",7), new card("Hearts",8), new card("Hearts",9), new card("Hearts",10), new card("Hearts",11), new card("Hearts",12), new card("Hearts",13), new card("Hearts",14),
                 new card("Diamonds",2), new card("Diamonds",3), new card("Diamonds",4), new card("Diamonds",5), new card("Diamonds",6), new card("Diamonds",7), new card("Diamonds",8), new card("Diamonds",9), new card("Diamonds",10), new card("Diamonds",11), new card("Diamonds",12), new card("Diamonds",13), new card("Diamonds",14)
         };
+        card[] using = new card[52];
+        card[] playerHand;
+        card[] houseHand;
+
         // TODO bet first, then deal cards.
         System.out.println("Playing...");
         while(!answer.equals("0")){
-            menu2(wallet);
-            answer = read.nextLine();
-            if (answer.equals("0")){
-                System.out.println("Exiting the table...");
-                return wallet;
+            while (bet <= 0){
+                menu2(wallet);
+                answer = read.nextLine();
+                if (answer.equals("0")){
+                    System.out.println("Exiting the table...");
+                    return wallet;
+                }
+                else if (answer.equals("1")){
+                    try{
+                        System.out.println("Please enter the amount you'd like to bet: ");
+                        bet = read.nextInt();
+                        break;
+                    }
+                    catch (Exception e){
+                        System.out.println("Invalid input.");
+                    }
+                }
+                else {
+                    System.out.println("Sorry, your answer is unreadable.");
+                }
+
             }
-            else if (answer.equals("1")){
-                System.out.println("Please enter the amount you'd like to bet: ");
-                break;
-            }
-            else {
-                System.out.println("Sorry, your answer is unreadable.");
-            }
+            System.out.println("Great! Dealing out cards...");
         }
-        System.out.println("Shuffling and dealing...");
-        int deckCount = deck.length - 1;
 
         return wallet;
     }
