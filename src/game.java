@@ -13,14 +13,14 @@ public class game {
         System.out.println("Please select an option:");
         System.out.println("1. Join the table");
         System.out.println("2. Do nothing");
-        System.out.println("3. Exit");
+        System.out.println("0. Exit");
     }
 
     public static void menu2(int currency){
         System.out.println("Your wallet contains: "+ currency + " chips.");
         System.out.println("Please select an option:");
         System.out.println("1. Place an opening bet");
-        System.out.println("2. Exit");
+        System.out.println("0. Exit");
     }
 
     public static int playGame(int wallet){
@@ -28,8 +28,9 @@ public class game {
         Random randomObj = new Random();
         int playerScore = 0;
         int houseScore = 0;
+        int bet = 0;
         Scanner read = new Scanner(System.in);
-        String answer = "0";
+        String answer = "-1";
         card[] deck = {
                 new card("Spades",2), new card("Spades",3), new card("Spades",4), new card("Spades",5), new card("Spades",6), new card("Spades",7), new card("Spades",8), new card("Spades",9), new card("Spades",10), new card("Spades",11), new card("Spades",12), new card("Spades",13), new card("Spades",14),
                 new card("Clubs",2), new card("Clubs",3), new card("Clubs",4), new card("Clubs",5), new card("Clubs",6), new card("Clubs",7), new card("Clubs",8), new card("Clubs",9), new card("Clubs",10), new card("Clubs",11), new card("Clubs",12), new card("Clubs",13), new card("Clubs",14),
@@ -38,10 +39,10 @@ public class game {
         };
         // TODO bet first, then deal cards.
         System.out.println("Playing...");
-        while(true){
+        while(!answer.equals("0")){
             menu2(wallet);
             answer = read.nextLine();
-            if (answer.equals("2")){
+            if (answer.equals("0")){
                 System.out.println("Exiting the table...");
                 return wallet;
             }
@@ -65,10 +66,10 @@ public class game {
         int wallet = 100;
         //
         Scanner read = new Scanner(System.in);
-        String answer = "0";
+        String answer = "-1";
 
         // Opening...
-        while (!answer.equals("3")){
+        while (!answer.equals("0")){
             System.out.println("Welcome to BlackJack!");
             menu1(wallet);
             answer = read.nextLine();
@@ -82,7 +83,7 @@ public class game {
                 case "2":
                     System.out.println("Doing nothing...");
                     break;
-                case "3":
+                case "0":
                     System.out.println("Exiting...");
                     System.exit(0);
                     break;
