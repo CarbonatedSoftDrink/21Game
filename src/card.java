@@ -6,7 +6,7 @@ public class card {
     public card(){
         this.suit = "N/A";
         this.value = 0;
-        this.letter = '0';
+        this.letter = '#';
     }
 
     public card(String newSuit, int newValue){
@@ -23,6 +23,15 @@ public class card {
         }
         else if (this.value == 14){
             this.letter = 'A';
+        }
+    }
+
+    public void displayCard(){
+        if (this.letter == '#'){
+            System.out.print(this.getValue() + " of " + this.getSuit());
+        }
+        else{
+            System.out.print(this.getLetter() + " of " + this.getSuit());
         }
     }
 

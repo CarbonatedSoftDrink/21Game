@@ -4,9 +4,6 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class game {
-    // Hands
-    ArrayList<card> playerHand = new ArrayList<>();
-    ArrayList<card> houseHand = new ArrayList<>();
 
     public static void menu1(int currency){
         System.out.println("Your wallet contains: "+ currency + " chips.");
@@ -23,6 +20,14 @@ public class game {
         System.out.println("0. Exit");
     }
 
+    public static void displayHand(ArrayList<card> hand){
+        for (int i = 0; i < hand.size(); i++){
+            hand.get(i).displayCard();
+            System.out.print(", ");
+        }
+
+    }
+
     public static void deal(card[] deck, card[] using, ArrayList<card> hand){
         Random random = new Random();
         int capacity = deck.length;
@@ -33,6 +38,9 @@ public class game {
     }
 
     public static int playGame(int wallet){
+        // Hands
+        ArrayList<card> playerHand = new ArrayList<>();
+        ArrayList<card> houseHand = new ArrayList<>();
         // arrays and variables
         Random randomObj = new Random();
         int playerScore = 0;
@@ -47,11 +55,10 @@ public class game {
                 new card("Diamonds",2), new card("Diamonds",3), new card("Diamonds",4), new card("Diamonds",5), new card("Diamonds",6), new card("Diamonds",7), new card("Diamonds",8), new card("Diamonds",9), new card("Diamonds",10), new card("Diamonds",11), new card("Diamonds",12), new card("Diamonds",13), new card("Diamonds",14)
         };
         card[] using = new card[52];
-        card[] playerHand;
-        card[] houseHand;
 
         // TODO bet first, then deal cards.
         System.out.println("Playing...");
+        System.out.println("This version is played with 1 deck of 52 cards.");
         while(!answer.equals("0")){
             while (bet <= 0){
                 menu2(wallet);
@@ -76,6 +83,11 @@ public class game {
 
             }
             System.out.println("Great! Dealing out cards...");
+            // First deal
+            playerHand.add(deck[randomObj.nextInt(deck.length)]);
+            houseHand.add(deck[randomObj.nextInt(deck.length)]);
+            playerHand.add(deck[randomObj.nextInt(deck.length)]);
+            houseHand.add(deck[randomObj.nextInt(deck.length)]);
         }
 
         return wallet;
